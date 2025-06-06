@@ -23,6 +23,7 @@ Body:
   "desc" : <product description>,
   "price" : <product price>
 }
+
 Method: PUT - NY!
 
 URL: /api/menu/{prodId}
@@ -38,6 +39,7 @@ Body:
   "desc" : <product description>,
   "price" : <product price>
 }
+
 Method: DELETE - NY!
 
 URL: /api/menu/{prodId}
