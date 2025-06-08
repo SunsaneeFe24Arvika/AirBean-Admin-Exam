@@ -2,6 +2,8 @@
 
 Server: mongodb+srv://Jesper:Jesper@cluster0.4iykyec.mongodb.net/AirBeanAPI?retryWrites=true&w=majority&appName=Cluster0
 
+Compass: mongodb+srv://Jesper:Jesper@cluster0.4iykyec.mongodb.net/
+
 Airbean Documentation
 Menu
 Method: GET
