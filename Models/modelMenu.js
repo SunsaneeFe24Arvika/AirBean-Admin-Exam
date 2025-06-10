@@ -17,6 +17,9 @@ const menuSchema = new Schema(
 			type: String,
 			required: true,
 		},
+		baseUrl : {
+        type : String,
+		},
 		price: {
 			type: Number,
 			required: true,
