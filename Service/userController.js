@@ -1,5 +1,6 @@
 import User from '../Models/modelUser.js';
 import generateUserId from '../Utils/generateUserID.js';
+//import { generateId } from '../Utils/generateId.js';
 import { setCurrentUser, clearCurrentUser } from '../Utils/globalUser.js';
 import Coupon from '../Models/modelsCoupon.js';
 import { hashPassword, comparePasswords, signToken } from "../Utils/index.js"; 

@@ -9,6 +9,8 @@ const orderRouter = express.Router();
 orderRouter.get('/', getAllOrders); // /api/orders
 orderRouter.get('/:userId', getOrdersByUserId); // /api/orders/:userId
 orderRouter.post('/', createNewOrder); // /api/orders och skickar in body med cartId
+
+// Kvitto
 orderRouter.post('/:userId/checkout', async (req, res) => {
     const userId = req.params.userId;
     const discountCode = req.body.discountCode;

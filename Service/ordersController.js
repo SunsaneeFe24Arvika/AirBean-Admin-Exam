@@ -2,6 +2,7 @@ import Order from '../Models/modelOrder.js';
 import Cart from '../Models/modelCart.js';
 import generateOrderId from '../Utils/generateOrderID.js';
 
+
 // GET /api/orders, hämtar alla ordrar
 export const getAllOrders = async (req, res) => {
 	try {
