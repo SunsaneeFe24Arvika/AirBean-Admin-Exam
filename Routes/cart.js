@@ -1,6 +1,6 @@
 import express from 'express';
 import { getCartById, getAllCarts, updateCart } from '../Service/cartController.js';
-import { getProduct } from '../Middlewares/orderAuth.js';
+import { getProduct } from '../Middlewares/menuAuth.js';
 import { getCartTotalWithDiscount } from '../Service/discountController.js';
 
 const router = express.Router();

@@ -1,5 +1,6 @@
 import Menu from '../Models/modelMenu.js';
 
+
 export async function getAllMenu() {
     try {
         const menus = await Menu.find();
@@ -10,12 +11,5 @@ export async function getAllMenu() {
     }
 };
 
-export async function deleteMenu(prodID) {
-    try {
-        const result = await Menu.findOneAndDelete({ prodID : prodID });
-        return result;
-    } catch(error) {
-        console.log(error.message);
-        return null;
-    }
-};
+
+
