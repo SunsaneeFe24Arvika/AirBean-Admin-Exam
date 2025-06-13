@@ -1,0 +1,187 @@
+openapi: 3.0.0
+info:
+  title: AirBean API
+  description: API Documentation for individual exam AirBean API
+  version: 2.0.0
+
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+  schemas:
+    Menu:
+      description: Menu
+      type: object
+      properties:
+        productID:
+          type: string
+          example: prod-gvapg
+        title:
+          type: string
+          example: Cappuccino
+        price:
+          type: number
+          example: 49
+
+paths:
+  /api/menu:
+    get:
+      tags:
+        - menu
+      description: Returns all menus
+      responses:
+        '200':
+          description: Response containing menus
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    example: true
+                  posts:
+                    type: array
+                    items:
+                      $ref: "#/components/schemas/Menu"
+        '404':
+          description: Response error message
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    example: false
+                  message:
+                    type: string
+                    example: No menu found
+    post:
+      tags:
+        - menu
+      security:
+        - bearerAuth: []
+      summary: Create a new menu
+      description: Creates a new menu with name, price and description.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Menu"
+      responses:
+        '201':
+          description: Menu created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    example: true
+                  menu:
+                    $ref: "#/components/schemas/Menu"
+        '500':
+          description: Server error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    example: false
+                  message:
+                    type: string
+                    example: Could not create menu item
+
+  /api/menu/{prodId}:
+    put:
+      tags:
+        - menu
+      security:
+        - bearerAuth: []
+      description: Update menu details
+      parameters:
+        - in: path
+          name: prodId
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Menu"
+      responses:
+        '200':
+          description: Response returns menu updated
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    example: true
+                  menu:
+                    $ref: "#/components/schemas/Menu"
+        '404':
+          description: Could not find product ID
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    example: false
+                  message:
+                    type: string
+                    example: Menu item not found or could not be updated
+
+    delete:
+      tags:
+        - menu
+      security:
+        - bearerAuth: []
+      summary: Delete menu by prodId
+      description: Delete a menu item by its product ID
+      parameters:
+        - in: path
+          name: prodId
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Response for successful deletion of menu
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: Menu item deleted
+        '404':
+          description: Response for unsuccessful deletion of menu
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    example: false
+                  message:
+                    type: string
+                    example: Menu item not found
